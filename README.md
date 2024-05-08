@@ -57,5 +57,19 @@ pip install -r requirements_pred.txt
 ```
 
 **Dataset and features from ResNet18 parameters**
+For weights and biases:
+```python
+python prediction/table_finale.py
+```
+and for validation loss:
+```python
+python prediction/table_creator_3.py
+```
+
+**HPO Experiment examples**
+For Decision Trees:
+```python
+python prediction/xgb_prediction.py --first_layer_1 N --first_layer_2 N --first_layer_3 N --first_layer_4 N --middle_layer_1 N --middle_layer_2 N --middle_layer_3 N --middle_layer_4 N --last_layer_1 N --last_layer_2 N --last_layer_3 N --last_layer_4 N --batch_norm Y --conv N --before_relu N --after_relu N --downsample N --gradnorm Y --gradmean Y --gradpercent Y
+```
 
 
