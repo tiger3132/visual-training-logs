@@ -69,11 +69,11 @@ python prediction/table_creator_3.py
 
 ### HPO Experiment examples
 
-Hyperparameter Optimization of XGBoost on dataset containing 0-5000 timesteps, batch normalization layer and mean of gradient:
+**Hyperparameter Optimization of XGBoost on dataset containing 0-5000 timesteps, batch normalization layer and mean of gradient:**
 ```python
 python prediction/xgb_prediction_finale.py --hp N --p0to5000 Y --p5000to10000 N --p10000to15000 N --p15000to20000 N --trainloss0to5000 N --trainloss5000to10000 N --trainloss10000to15000 N --trainloss15000to20000 N --validloss0to5000 N --validloss5000to10000 N --validloss10000to15000 N --validloss15000to20000 N --batch_norm Y --conv N --before_relu N --after_relu N --downsample N --gradnorm N --gradmean Y --gradpercent N --first_layer_1 N --first_layer_2 N --first_layer_3 N --first_layer_4 N --middle_layer_1 N --middle_layer_2 N --middle_layer_3 N --middle_layer_4 N --last_layer_1 N --last_layer_2 N --last_layer_3 N --last_layer_4 N
 ```
-Evaluation of XGBoost with optimal hyperparameters:
+**Evaluation of XGBoost with optimal hyperparameters:**
 ```python
 python prediction/xgb_prediction_finale.py --tree_no 94 --mode test --hp N --p0to5000 Y --p5000to10000 N --p10000to15000 N --p15000to20000 N --trainloss0to5000 N --trainloss5000to10000 N --trainloss10000to15000 N --trainloss15000to20000 N --validloss0to5000 N --validloss5000to10000 N --validloss10000to15000 N --validloss15000to20000 N --batch_norm Y --conv N --before_relu N --after_relu N --downsample N --gradnorm N --gradmean Y --gradpercent N --first_layer_1 N --first_layer_2 N --first_layer_3 N --first_layer_4 N --middle_layer_1 N --middle_layer_2 N --middle_layer_3 N --middle_layer_4 N --last_layer_1 N --last_layer_2 N --last_layer_3 N --last_layer_4 N
 ```
