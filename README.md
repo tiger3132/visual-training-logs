@@ -13,6 +13,7 @@ pip install -r requirements.txt
 python train/train_resnet_random.py
 ```
 **Training Logs Analysis experiment**
+
 Example A:
 ```python
 python train/train_resnet.py --batch_size 64 --optimizer adamcpr --lr 0.001 --kappa_init_param 1000 --kappa_init_method warm_start --wd_schedule_type cosine --lr_warmup_steps 200 --lr_decay_factor 0.1
