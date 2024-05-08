@@ -44,11 +44,18 @@ Example F:
 python train/train_resnet.py --batch_size 128 --optimizer adamw --lr 0.001 --beta1 0.9 --beta2 0.98 --weight_decay 0.001 --wd_schedule_type cosine --lr_warmup_steps 200 --lr_decay_factor 0.1 --data_transform 0
 ```
 
+Plot parameter graphs for all models already trained:
+```python
+python graph/all_graphs
+```
+
 ## For Performance Prediction
 
 ### Installation
 ```python
 pip install -r requirements_pred.txt
 ```
+
+**Dataset and features from ResNet18 parameters**
 
 
