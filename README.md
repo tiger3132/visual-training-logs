@@ -12,11 +12,12 @@ This repository contains the implementation of Visualization of Training Logs an
 pip install -r requirements.txt
 ```
 ### Training random configurations
+Trains the model for 20,000 timesteps once. 
 ```python
 python train/train_resnet_random.py
 ```
 ### Training Logs Analysis experiment
-
+When training for specific examples from the experiment in the paper.
 **Example A:**
 ```python
 python train/train_resnet.py --batch_size 64 --optimizer adamcpr --lr 0.001 --kappa_init_param 1000 --kappa_init_method warm_start --wd_schedule_type cosine --lr_warmup_steps 200 --lr_decay_factor 0.1
@@ -48,6 +49,7 @@ python train/train_resnet.py --batch_size 128 --optimizer adamw --lr 0.001 --bet
 ```
 
 **Plot parameter graphs for all models already trained:**
+The graphs will be stored as .png file
 ```python
 python graph/all_graphs
 ```
