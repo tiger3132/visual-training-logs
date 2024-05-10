@@ -19,6 +19,7 @@ Trains the model for 20,000 timesteps once.
 python train/train_resnet_random.py
 ```
 ### Training Logs Analysis experiment
+
 When training for specific examples from the experiment in the paper.
 **Example A:**
 ```python
@@ -51,7 +52,8 @@ python train/train_resnet.py --batch_size 128 --optimizer adamw --lr 0.001 --bet
 ```
 
 **Plot parameter graphs for all models already trained:**
-The graphs will be stored as .png file
+
+The graphs will be stored as .png file in /param_graphs folder
 ```python
 python graph/all_graphs
 ```
