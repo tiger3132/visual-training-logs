@@ -94,10 +94,10 @@ for seed_file in os.listdir(directory): # Look through each file
                 bias1.plot(x, y)
 
 
-        task_name = f"{args.model_name}_seed{args.seed}_steps{args.max_train_steps}"
-        expt_dir = pathlib.Path("hparam_graphs_p2") / args.output_dir / args.session / task_name
+        #task_name = f"{args.model_name}_seed{args.seed}_steps{args.max_train_steps}"
+        expt_dir = pathlib.Path("param_graphs") / args.output_dir / args.session / task_name
         expt_dir.mkdir(parents=True, exist_ok=True)
-        base_dir = f"hparam_graphs_p2/{args.output_dir}/{args.session}"
+        base_dir = f"param_graphs/{args.output_dir}/{args.session}"
         test_acc = event.Scalars('test_accuracy')[0].value
         expt_name = base_dir + "/" + task_name + "/" + filename + "_acc" + str(round(test_acc, 3)) + ".png"
         plt.savefig(expt_name, bbox_inches="tight")
