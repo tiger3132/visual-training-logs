@@ -5,6 +5,8 @@ This repository contains the implementation of Visualization of Training Logs an
 
 ![Visualization of training logs according to ResNet18's structure](https://github.com/tiger3132/visual-training-logs/files/15262616/graph.pdf)
 
+In order to use, please git clone the repo!
+
 ## ResNet18 Training and Visualization of Training Logs
 
 ### Installation
