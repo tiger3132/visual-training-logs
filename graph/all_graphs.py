@@ -33,8 +33,10 @@ for seed_file in os.listdir(directory): # Look through each file
     for file in os.listdir(task_folder):
         filename = os.fsdecode(file)
         print(filename)
-        expt_dir = f"/work/dlclarge1/nawongsk-MySpace/{args.output_dir}/{args.session}/{task_name}/{filename}/version_0"
-        event = EventAccumulator(expt_dir)
+        #expt_dir = f"/work/dlclarge1/nawongsk-MySpace/{args.output_dir}/{args.session}/{task_name}/{filename}/version_0"
+        #expt_dir = pathlib.Path(args.output_dir) / args.session / task_name / filename / "version_0"
+        expt_dir = directory_str / task_name / filename / "version_0"
+        event = EventAccumulator(str(expt_dir))
         event.Reload()
 
         param_name = ["conv1", "bn1", "layer1.0.conv1", "layer1.0.bn1", "layer1.0.conv2", "layer1.0.bn2", "layer1.1.conv1", "layer1.1.bn1", "layer1.1.conv2", "layer1.1.bn2",
@@ -97,7 +99,7 @@ for seed_file in os.listdir(directory): # Look through each file
 
 
         #task_name = f"{args.model_name}_seed{args.seed}_steps{args.max_train_steps}"
-        expt_dir = pathlib.Path("param_graphs") / args.output_dir / args.session / task_name
+        expt_dir = pathlib.Path("param_graphs_a") / args.output_dir / args.session / task_name
         expt_dir.mkdir(parents=True, exist_ok=True)
         base_dir = f"param_graphs/{args.output_dir}/{args.session}"
         test_acc = event.Scalars('test_accuracy')[0].value
