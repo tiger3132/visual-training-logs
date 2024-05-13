@@ -1,6 +1,11 @@
 # Visualization of Training Logs and Performance Prediction
 
-This repository contains the implementation of Visualization of Training Logs and Performance Prediction
+
+This repository contains the implementation of Visualization of Training Logs and Performance Prediction. 
+
+![Visualization of training logs according to ResNet18's structure](https://github.com/tiger3132/visual-training-logs/files/15262616/graph.pdf)
+
+In order to use, please git clone the repo!
 
 ## ResNet18 Training and Visualization of Training Logs
 
@@ -9,10 +14,13 @@ This repository contains the implementation of Visualization of Training Logs an
 pip install -r requirements.txt
 ```
 ### Training random configurations
+Trains the model for 20,000 timesteps once. 
 ```python
 python train/train_resnet_random.py
 ```
 ### Training Logs Analysis experiment
+
+When training for specific examples from the experiment in the paper.
 
 **Example A:**
 ```python
@@ -45,6 +53,8 @@ python train/train_resnet.py --batch_size 128 --optimizer adamw --lr 0.001 --bet
 ```
 
 **Plot parameter graphs for all models already trained:**
+
+The graphs will be stored as .png file in /param_graphs folder
 ```python
 python graph/all_graphs
 ```
@@ -67,15 +77,39 @@ python prediction/table_finale.py
 python prediction/table_creator_3.py
 ```
 
-### HPO Experiment examples
+### Hyperparameter Optimization Experiment examples
 
-**Hyperparameter Optimization of XGBoost on dataset containing 0-5000 timesteps, batch normalization layer and mean of gradient:**
+**HPO of XGBoost on dataset containing 0-5000 timesteps, batch normalization layer and mean of gradient:**
 ```python
 python prediction/xgb_prediction_finale.py --hp N --p0to5000 Y --p5000to10000 N --p10000to15000 N --p15000to20000 N --trainloss0to5000 N --trainloss5000to10000 N --trainloss10000to15000 N --trainloss15000to20000 N --validloss0to5000 N --validloss5000to10000 N --validloss10000to15000 N --validloss15000to20000 N --batch_norm Y --conv N --before_relu N --after_relu N --downsample N --gradnorm N --gradmean Y --gradpercent N --first_layer_1 N --first_layer_2 N --first_layer_3 N --first_layer_4 N --middle_layer_1 N --middle_layer_2 N --middle_layer_3 N --middle_layer_4 N --last_layer_1 N --last_layer_2 N --last_layer_3 N --last_layer_4 N
 ```
-**Evaluation of XGBoost with optimal hyperparameters:**
+**Evaluation of XGBoost (Small) with optimal hyperparameters:**
 ```python
 python prediction/xgb_prediction_finale.py --tree_no 94 --mode test --hp N --p0to5000 Y --p5000to10000 N --p10000to15000 N --p15000to20000 N --trainloss0to5000 N --trainloss5000to10000 N --trainloss10000to15000 N --trainloss15000to20000 N --validloss0to5000 N --validloss5000to10000 N --validloss10000to15000 N --validloss15000to20000 N --batch_norm Y --conv N --before_relu N --after_relu N --downsample N --gradnorm N --gradmean Y --gradpercent N --first_layer_1 N --first_layer_2 N --first_layer_3 N --first_layer_4 N --middle_layer_1 N --middle_layer_2 N --middle_layer_3 N --middle_layer_4 N --last_layer_1 N --last_layer_2 N --last_layer_3 N --last_layer_4 N
 ```
 
+**HPO of Random Forest containing 0-5000 timesteps, convolutional layer and mean of gradient:**
+```python
+python prediction/rf_prediction.py --hp N --p0to5000 Y --p5000to10000 N --p10000to15000 N --p15000to20000 N --trainloss0to5000 N --trainloss5000to10000 N --trainloss10000to15000 N --trainloss15000to20000 N --validloss0to5000 N --validloss5000to10000 N --validloss10000to15000 N --validloss15000to20000 N --batch_norm N --conv Y --before_relu N --after_relu N --downsample N --gradnorm N --gradmean Y --gradpercent N --first_layer_1 N --first_layer_2 N --first_layer_3 N --first_layer_4 N --middle_layer_1 N --middle_layer_2 N --middle_layer_3 N --middle_layer_4 N --last_layer_1 N --last_layer_2 N --last_layer_3 N --last_layer_4 N
+```
+
+**Evaluation of Random Forest with optimal hyperparameters**
+```python
+python prediction/rf_prediction.py --tree_no 123 --mode test --hp N --p0to5000 Y --p5000to10000 N --p10000to15000 N --p15000to20000 N --trainloss0to5000 N --trainloss5000to10000 N --trainloss10000to15000 N --trainloss15000to20000 N --validloss0to5000 N --validloss5000to10000 N --validloss10000to15000 N --validloss15000to20000 N --batch_norm N --conv Y --before_relu N --after_relu N --downsample N --gradnorm N --gradmean Y --gradpercent N --first_layer_1 N --first_layer_2 N --first_layer_3 N --first_layer_4 N --middle_layer_1 N --middle_layer_2 N --middle_layer_3 N --middle_layer_4 N --last_layer_1 N --last_layer_2 N --last_layer_3 N --last_layer_4 N
+```
+
+**HPO of Decision Trees containing 0-5000 timesteps, all layers and mean of gradient:**
+```python
+python prediction/dt_prediction_finale.py --hp N --p0to5000 Y --p5000to10000 N --p10000to15000 N --p15000to20000 N --trainloss0to5000 N --trainloss5000to10000 N --trainloss10000to15000 N --trainloss15000to20000 N --validloss0to5000 N --validloss5000to10000 N --validloss10000to15000 N --validloss15000to20000 N --batch_norm Y --conv Y --before_relu Y --after_relu Y --downsample Y --gradnorm N --gradmean Y --gradpercent N --first_layer_1 Y --first_layer_2 Y --first_layer_3 Y --first_layer_4 Y --middle_layer_1 Y --middle_layer_2 Y --middle_layer_3 Y --middle_layer_4 Y --last_layer_1 Y --last_layer_2 Y --last_layer_3 Y --last_layer_4 Y --norm N --mean N
+```
+
+**Evaluation of Decision Trees with optimal hyperparameters**
+```python
+python prediction/dt_prediction_finale.py --tree_no 160 --mode test --hp N --p0to5000 Y --p5000to10000 N --p10000to15000 N --p15000to20000 N --trainloss0to5000 N --trainloss5000to10000 N --trainloss10000to15000 N --trainloss15000to20000 N --validloss0to5000 N --validloss5000to10000 N --validloss10000to15000 N --validloss15000to20000 N --batch_norm Y --conv Y --before_relu Y --after_relu Y --downsample Y --gradnorm N --gradmean Y --gradpercent N --first_layer_1 Y --first_layer_2 Y --first_layer_3 Y --first_layer_4 Y --middle_layer_1 Y --middle_layer_2 Y --middle_layer_3 Y --middle_layer_4 Y --last_layer_1 Y --last_layer_2 Y --last_layer_3 Y --last_layer_4 Y --norm N --mean N
+```
+
+**Evaluation of crafted rule-based prediction:**
+```python
+python prediction/rule_prediction.py --first_layer_1 N --first_layer_2 N --first_layer_3 N --first_layer_4 N --middle_layer_1 N --middle_layer_2 N --middle_layer_3 N --middle_layer_4 N --last_layer_1 N --last_layer_2 N --last_layer_3 N --last_layer_4 N --batch_norm Y --conv N --before_relu N --after_relu N --downsample N --gradnorm N --gradmean Y --gradpercent N
+```
 
