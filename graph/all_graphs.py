@@ -18,7 +18,8 @@ args = parser.parse_args()
 #task_name = f"{args.model_name}_seed{args.seed}_steps{args.max_train_steps}"
 
 #directory_str = f"/work/dlclarge1/nawongsk-MySpace/{args.output_dir}/{args.session}/{task_name}"
-directory_str = f"/work/dlclarge1/nawongsk-MySpace/{args.output_dir}/{args.session}"
+directory_str = pathlib.Path(args.output_dir) / args.session
+#directory_str = f"/work/dlclarge1/nawongsk-MySpace/{args.output_dir}/{args.session}"
 
 directory = os.fsencode(directory_str)
 
@@ -27,7 +28,8 @@ for seed_file in os.listdir(directory): # Look through each file
     print(seedfilename)
     task_name = seedfilename
     print(directory_str)
-    task_folder = directory_str + "/" + seedfilename
+    task_folder = directory_str / seedfilename
+    #task_folder = directory_str + "/" + seedfilename
     for file in os.listdir(task_folder):
         filename = os.fsdecode(file)
         print(filename)
