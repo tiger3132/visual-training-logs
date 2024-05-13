@@ -99,7 +99,7 @@ for seed_file in os.listdir(directory): # Look through each file
 
 
         #task_name = f"{args.model_name}_seed{args.seed}_steps{args.max_train_steps}"
-        expt_dir = pathlib.Path("param_graphs_a") / args.output_dir / args.session / task_name
+        expt_dir = pathlib.Path("param_graphs") / args.output_dir / args.session / task_name
         expt_dir.mkdir(parents=True, exist_ok=True)
         base_dir = f"param_graphs/{args.output_dir}/{args.session}"
         test_acc = event.Scalars('test_accuracy')[0].value
