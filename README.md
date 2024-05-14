@@ -61,6 +61,8 @@ python graph/all_graphs
 
 ## For Performance Prediction
 
+This experiment requires a few trained random ResNet18 samples before creating the table along with the features.
+
 ### Installation
 ```python
 pip install -r requirements_pred.txt
