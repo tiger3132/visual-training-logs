@@ -54,7 +54,7 @@ python train/train_resnet.py --batch_size 128 --optimizer adamw --lr 0.001 --bet
 
 **Plot parameter graphs for all models already trained:**
 
-The graphs will be stored as .png file in /param_graphs folder
+The graphs will be stored as .png file in /param_graphs/cifar100 folder
 ```python
 python graph/all_graphs
 ```
