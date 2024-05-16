@@ -1,7 +1,7 @@
 # Visualization of Training Logs and Performance Prediction
 
 
-This repository contains the implementation of Visualization of Training Logs and Performance Prediction. 
+This repository contains the implementation of Visualization of Training Logs and Performance Prediction for ResNet18 model on CIFAR100 dataset. 
 
 ![Visualization of training logs according to ResNet18's structure](https://github.com/tiger3132/visual-training-logs/files/15262616/graph.pdf)
 
