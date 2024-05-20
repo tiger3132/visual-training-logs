@@ -72,7 +72,7 @@ pip install -r requirements_pred.txt
 
 **For weights and biases:**
 ```python
-python prediction/table_finale.py
+python prediction/table_creator_finale.py
 ```
 **and for validation loss:**
 ```python
