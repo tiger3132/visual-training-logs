@@ -4,6 +4,7 @@ import os
 import numpy as np
 import pandas as pd
 import torch
+import pathlib
 
 
 parser = ArgumentParser()
@@ -19,7 +20,8 @@ args = parser.parse_args()
 #task_name = f"{args.model_name}_seed{args.seed}_steps{args.max_train_steps}"
 
 #directory_str = f"/work/dlclarge1/nawongsk-MySpace/{args.output_dir}/{args.session}/{task_name}"
-directory_str = f"/work/dlclarge1/nawongsk-MySpace/{args.output_dir}/{args.session}"
+directory_str = pathlib.Path(args.output_dir) / args.session
+#directory_str = f"/work/dlclarge1/nawongsk-MySpace/{args.output_dir}/{args.session}"
 
 directory = os.fsencode(directory_str)
 
@@ -87,7 +89,8 @@ for seed_file in os.listdir(directory):
     print(seedfilename)
     task_name = seedfilename
     print(directory_str)
-    task_folder = directory_str + "/" + seedfilename
+    #task_folder = directory_str + "/" + seedfilename
+    task_folder = directory_str / seedfilename
 #for file in os.listdir(directory):
     for file in os.listdir(task_folder):
         filename = os.fsdecode(file)
@@ -297,8 +300,9 @@ for seed_file in os.listdir(directory):
         #hp_df = hp_df._append(df_new, ignore_index=True)
         #print(f"df hp shape: {hp_df.shape}")
 
-        expt_dir = f"/work/dlclarge1/nawongsk-MySpace/{args.output_dir}/{args.session}/{task_name}/{filename}/version_0"
-        event = EventAccumulator(expt_dir)
+        #expt_dir = f"/work/dlclarge1/nawongsk-MySpace/{args.output_dir}/{args.session}/{task_name}/{filename}/version_0"
+        expt_dir = directory_str / task_name / filename / "version_0"
+        event = EventAccumulator(str(expt_dir))
         event.Reload()
         y = event.Scalars('test_accuracy')
         y_arr.append(y[0].value)

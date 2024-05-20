@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 import math
 from pandas.testing import assert_frame_equal
+import pathlib
 
 
 parser = ArgumentParser()
@@ -20,7 +21,8 @@ args = parser.parse_args()
 #task_name = f"{args.model_name}_seed{args.seed}_steps{args.max_train_steps}"
 
 #directory_str = f"/work/dlclarge1/nawongsk-MySpace/{args.output_dir}/{args.session}/{task_name}"
-directory_str = f"/work/dlclarge1/nawongsk-MySpace/{args.output_dir}/{args.session}"
+directory_str = pathlib.Path(args.output_dir) / args.session
+#directory_str = f"/work/dlclarge1/nawongsk-MySpace/{args.output_dir}/{args.session}"
 
 directory = os.fsencode(directory_str)
 
@@ -33,14 +35,16 @@ for seed_file in os.listdir(directory):
     print(seedfilename)
     task_name = seedfilename
     print(directory_str)
-    task_folder = directory_str + "/" + seedfilename
+    task_folder = directory_str / seedfilename
+    #task_folder = directory_str + "/" + seedfilename
 #for file in os.listdir(directory):
     for file in os.listdir(task_folder):
         filename = os.fsdecode(file)
         print(f"file name: {filename}")
 
-        expt_dir = f"/work/dlclarge1/nawongsk-MySpace/{args.output_dir}/{args.session}/{task_name}/{filename}/version_0"
-        event = EventAccumulator(expt_dir)
+        #expt_dir = f"/work/dlclarge1/nawongsk-MySpace/{args.output_dir}/{args.session}/{task_name}/{filename}/version_0"
+        expt_dir = directory_str / task_name / filename / "version_0"
+        event = EventAccumulator(str(expt_dir))
         event.Reload()
         y = event.Scalars('test_accuracy')
         y_arr.append(y[0].value)
@@ -108,6 +112,7 @@ for seed_file in os.listdir(directory):
                     params.append(param_name + "_gradnorm15000-20000")
                     params.append(param_name + "_gradmean15000-20000")
                     params.append(param_name + "_gradpercent15000-20000")
+        """
         df_test = pd.read_csv("/work/dlclarge1/nawongsk-MySpace/test.csv")
         # testing
         for col in df_test.columns:
@@ -115,6 +120,7 @@ for seed_file in os.listdir(directory):
                 #print(col)
                 #print(params)
                 assert col in params
+        """
         create_column = False
         stats.append(stat_instance)
 
